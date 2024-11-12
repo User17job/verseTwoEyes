@@ -17,11 +17,9 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: grid;
+        place-content: center;
         height: 100vh;
-        background-color: #000000;
         background-image: linear-gradient(
           -55deg,
           black 2%,
@@ -31,132 +29,162 @@
         color: rgb(0, 0, 0);
         font-weight: 550;
       }
-
-      .light {
-        font-family: "Bangers", system-ui;
-        /* font-size: 95px; */
-        font-size: calc(5rem + 2vw);
-        position: absolute;
-        left: 2%;
-        top: -10%;
-        color: white;
-        text-shadow: 8px 8px 10px rgb(149, 149, 149);
-      }
-
-      .container {
-        width: 400px;
-        height: 450px;
-        max-width: 100%;
-        background-color: #ffffff;
-        border: 2px solid #000000;
-        padding: 20px;
-        box-sizing: border-box;
+      .card {
+        width: 320px;
+        padding: 30px;
+        background: #fff;
+        border: 8px solid #000;
+        box-shadow: 15px 15px 0 #000;
+        transform: rotate(-2deg);
+        transition: all 0.3s ease;
         position: relative;
-        box-shadow: 17px 18px 4px rgb(255, 255, 255);
-        color: rgb(0, 0, 0);
-
-        display: grid;
-        grid-template-columns: auto;
+        overflow: hidden;
       }
-
-      .btn {
+      .card:active {
+        animation: shake 0.5s ease-in-out;
+      }
+      .card:hover {
+        transform: rotate(0deg) scale(1.02);
+        box-shadow: 20px 20px 0 #000;
+      }
+      .banner {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        /* padding: 5px 10px; */
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0);
-        color: rgb(0, 0, 0);
-        text-decoration: none;
-        font-size: 14px;
-      }
-
-      h1 > img {
-        width: 200px;
-        aspect-ratio: 1;
-        margin: auto;
-        position: absolute;
-        left: 50%;
-        top: 17%;
-        transform: translate(-50%, -50%);
-
-        filter: drop-shadow(5.2px 6.6px 1px rgba(67, 67, 67, 0.744));
-      }
-      h3 {
+        top: 3px;
+        right: -95px;
+        background: #000;
+        color: #fff;
+        padding: 15px;
+        width: 350px;
         text-align: center;
-        margin-top: 50px;
-        text-shadow: 1px 1.4px 0.5px rgba(67, 67, 67, 0.747);
+        transform: rotate(45deg);
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 2px;
+        overflow: hidden;
+        transition: background 0.5s ease;
       }
-      p {
+      .banner-text {
+        display: inline-block;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        width: 100%;
+        position: absolute;
+        left: 13%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .banner:hover .banner-text:first-child {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+      .banner:hover .banner-text:last-child {
+        opacity: 1;
+        transform: translateY(-40%);
+      }
+      .banner-text:last-child {
+        opacity: 0;
+        transform: translateY(60%);
+      }
+      .banner:hover {
+        background: red;
+      }
+      .card__title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        display: block;
+        border-bottom: 2px solid #000;
+        width: 50%; /* or any other percentage or pixel value */
+      }
+      .card__subtitle {
         font-size: 16px;
-        font-weight: 600;
-        text-align: justify;
-        margin-top: 10px;
-        text-align: center;
-        text-shadow: 1px 1.4px 0.5px rgba(67, 67, 67, 0.738);
+        line-height: 1.4;
+        color: #333;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+      }
+      .card__form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .card__form input {
+        padding: 12px;
+        border: 4px solid #000;
+        font-size: 16px;
+        font-family: "Proxima Nova", sans-serif;
+        transition: all 0.3s ease;
+        background-color: #fff;
+      }
+      .card__form input:focus {
+        outline: none;
+        transform: scale(1.05);
+      }
+      .sign-up {
+        border: 4px solid #000;
+        background: #000;
+        color: #fff;
+        padding: 12px;
+        font-size: 18px;
+        width: 90%;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
       }
 
-      .footer {
-        position: absolute;
-        bottom: 10px;
-
-        font-size: 12px;
-        text-align: center;
-        left: 50%;
-        top: 95%;
-        transform: translate(-50%, -50%);
-        color: rgb(196, 196, 196);
-        text-shadow: 2px 0.5px rgb(67, 67, 67);
+      .sign-up:hover {
+        background: #fff;
+        color: #000;
+        transform: translateY(-5px);
+        box-shadow: 0 5px 0 #000;
       }
-
-      .footerDiv {
-        position: relative;
-        width: 95px;
-        height: 5px;
-        left: 7px;
-        background-image: radial-gradient(rgba(73, 73, 73, 0.591), transparent);
-        backdrop-filter: blur(3px);
-        border-radius: 50%;
+      .sign-up:active {
+        animation: shake 0.5s ease-in-out;
+        transform: translateY(0);
+        box-shadow: none;
+      }
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+        100% {
+          transform: translateX(0);
+        }
       }
     </style>
   </head>
   <body>
-    <h1 class="light">Jesus</h1>
-    <div class="container">
-      <a href="https://example.com" class="btn"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          viewBox="0 0 24 24">
-          <g fill="#ffffff">
-            <path
-              d="M11 10.98a1 1 0 1 1 2 0v6a1 1 0 1 1-2 0zm1-4.929a1 1 0 1 0 0 2a1 1 0 0 0 0-2" />
-            <path
-              fill-rule="evenodd"
-              d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2M4 12a8 8 0 1 0 16 0a8 8 0 0 0-16 0"
-              clip-rule="evenodd" />
-          </g>
-        </svg>
-      </a>
-      <h1><img src="./TwoEyeLETRA.svg" alt="" /></h1>
-      <h3>Juan 8:32 | Jhon 8:32</h3>
-
-      <p>
-        "Y conoceréis la verdad, y la verdad os hará libres." - John 8:32 (NLT)
+    <div class="card">
+      <div class="banner">
+        <span class="banner-text">TWO EYES</span>
+        <span class="banner-text">FOLLOW US</span>
+      </div>
+      <span class="card__title">Juan 8:32 | John 8:32</span>
+      <p class="card__subtitle">
+        "Y conoceréis la verdad, y la verdad os hará libres." <br />
+        <br />
+        "Then you will know the truth, and the truth will set you free."
       </p>
-      <p>
-        "Then you will know the truth, and the truth will set you free." - John
-        8:32 (RVR1960)
-      </p>
+      <form class="card__form">
+        <input placeholder="AMEN" type="text" value="AMEN" />
+        <a
+          href="https://instagram.com/peniel.brito"
+          class="sign-up"
+          target="_blank">
+          Socials
+        </a>
+      </form>
     </div>
-    <div class="footer">
-      &copy; TwoEyesWorld
-      <div class="footerDiv"></div>
-    </div>
-    <script>
-      // JavaScript
-      // No additional JavaScript needed for this simple website
-    </script>
   </body>
 </html>
